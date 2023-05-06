@@ -1,46 +1,87 @@
+import { useState } from 'react';
+// COMPONENTS
+import TypeWriter from '../../js/TypeWriter';
+// TOOLS
+import CountUp from 'react-countup';
+// IMAGES
 import image1 from '../../assets/hero-img.svg'
 
+const typeWriter = [
+    "Te estuve marcando, ¿con quién estabas hablando?",
+    "¿Ya no me amas o por qué no quieres tener sexo conmigo?",
+    "Hay carreras para hombres y carreras para mujeres",
+    "A las mujeres no hay que entenderlas, hay que quererlas",
+];
+
 const Hero = () => {
+
+    const [showNumberViolence, setShowNumberViolence] = useState(false)
+
     return (
-        <section id="hero" class="hero d-flex align-items-center">
-            <div class="container">
-                <div class="row gy-4 d-flex justify-content-between">
-                    <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
-                        <h2 data-aos="fade-up">Your Lightning Fast Delivery Partner</h2>
-                        <p data-aos="fade-up" data-aos-delay="100">Facere distinctio molestiae nisi fugit tenetur repellat non praesentium nesciunt optio quis sit odio nemo quisquam. eius quos reiciendis eum vel eum voluptatem eum maiores eaque id optio ullam occaecati odio est possimus vel reprehenderit</p>
-                        <form action="#" class="form-search d-flex align-items-stretch mb-3" data-aos="fade-up" data-aos-delay="200">
-                            <input type="text" class="form-control" placeholder="ZIP code or CitY" />
-                            <button type="submit" class="btn btn-primary">Search</button>
+        <section id="hero" className="hero d-flex align-items-center">
+            <div className="container">
+                <div className="row gy-4 d-flex justify-content-between">
+                    <div className="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
+                        <div className="containerTypeWrite">
+                            <div className="typewriter-holder">
+                                <h1>
+                                    <TypeWriter data={typeWriter} />
+                                </h1>
+                            </div>
+                        </div>
+                        <form className="form-search d-flex align-items-stretch mb-3">
+                            <input
+                                type="text"
+                                className="form-control fw-bold"
+                                defaultValue={'Victimas de violencia digital'}
+                            />
+                            <span className="btn btn-primary" onClick={() => setShowNumberViolence(true)}>Search</span>
                         </form>
-                        <div class="row gy-4" data-aos="fade-up" data-aos-delay="400">
-                            <div class="col-lg-3 col-6">
-                                <div class="stats-item text-center w-100 h-100">
-                                    <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
-                                    <p>Clients</p>
+                        {
+                            showNumberViolence === true && (
+                                <div className="row gy-5">
+                                    <div className="col-lg-4 col-4">
+                                        <div className="stats-item text-center w-100 h-100">
+                                            <div>
+                                                <CountUp end={17} suffix='Millones' duration={10} />
+                                            </div>
+                                            <p>Personas en total</p>
+                                        </div>
+                                    </div>
+                                    <div className="col-lg-4 col-4">
+                                        <div className="stats-item text-center w-100 h-100">
+                                            <div>
+                                                <CountUp end={9} suffix='Millones' duration={10} />
+                                            </div>
+                                            <p>Mujeres</p>
+                                        </div>
+                                    </div>
+                                    <div className="col-lg-4 col-4">
+                                        <div className="stats-item text-center w-100 h-100">
+                                            <div>
+                                                <CountUp end={8} suffix='Millones' duration={10} />
+                                            </div>
+                                            <p>Hombres</p>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-3 col-6">
-                                <div class="stats-item text-center w-100 h-100">
-                                    <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
-                                    <p>Projects</p>
+                            )
+                        }
+                    </div>
+                    <div className="col-lg-5 order-1 order-lg-2 hero-img">
+                        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner rounded-circle">
+                                <div class="carousel-item active">
+                                    <img src='https://img.freepik.com/vector-gratis/tema-ilustracion-acoso-cibernetico_23-2148600811.jpg?w=2000' className="img-fluid mb-3 mb-lg-0" alt="" />
                                 </div>
-                            </div>
-                            <div class="col-lg-3 col-6">
-                                <div class="stats-item text-center w-100 h-100">
-                                    <span data-purecounter-start="0" data-purecounter-end="1453" data-purecounter-duration="1" class="purecounter"></span>
-                                    <p>Support</p>
+                                <div class="carousel-item">
+                                    <img src='https://img.freepik.com/vector-gratis/interfaz-telefono-movil-ciberacoso_23-2148589181.jpg?w=2000' className="img-fluid mb-3 mb-lg-0" alt="" />
                                 </div>
-                            </div>
-                            <div class="col-lg-3 col-6">
-                                <div class="stats-item text-center w-100 h-100">
-                                    <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="1" class="purecounter"></span>
-                                    <p>Workers</p>
+                                <div class="carousel-item">
+                                    <img src='https://img.freepik.com/vector-gratis/ilustracion-concepto-acoso-cibernetico_114360-9816.jpg' className="img-fluid mb-3 mb-lg-0" alt="" />
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-5 order-1 order-lg-2 hero-img" data-aos="zoom-out">
-                        <img src={image1} class="img-fluid mb-3 mb-lg-0" alt="" />
                     </div>
                 </div>
             </div>
