@@ -41,9 +41,9 @@ const Main = () => {
                     <div className="row gy-4">
                         <div className="col-lg-6 d-flex justify-content-center align-items-center">
                             <div>
-                            <iframe width="560" height="330" src="https://www.youtube.com/embed/4IjgSVdfZ1Q" title="YouTube video player" className="rounded"
-                                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                            </div>                            
+                                <iframe width="560" height="330" src="https://www.youtube.com/embed/4IjgSVdfZ1Q" title="YouTube video player" className="rounded"
+                                    frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+                            </div>
                         </div>
                         <div className="col-lg-6 content order-last  order-lg-first">
                             <h3>Acerca del Violentometro</h3>
@@ -82,65 +82,45 @@ const Main = () => {
                 </div>
             </section>
 
-            <section id="service" className="services pt-0">
+            <section id="typesViolence" className="services pt-0">
                 <div className="container" data-aos="fade-up">
                     <div className="section-header">
                         <span>Tipos de violencia</span>
                         <h2>Tipos de violencia</h2>
+                        <img width={"55%"} src="https://www.coomeva.com.co/en_equidad/publicaciones/171816/el-violentometro/info/coomeva/media/galeria195592.png" alt="metricas" />
                     </div>
                     <div className="row gy-4">
                         <div className="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                            <div className="card">
-                                <div className="card-img">
-                                    <img src="assets/img/storage-service.jpg" alt="" className="img-fluid" />
-                                </div>
-                                <h3><a href="service-details.html" className="stretched-link">Storage</a></h3>
-                                <p>Cumque eos in qui numquam. Aut aspernatur perferendis sed atque quia voluptas quisquam repellendus temporibus itaqueofficiis odit</p>
+                            <div className="card rounded">
+                                <img src="https://www.coomeva.com.co/en_equidad/publicaciones/171816/el-violentometro/info/coomeva/media/galeria195560.jpg" alt="metricImage" className="img-fluid" />
                             </div>
                         </div>
                         <div className="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                            <div className="card">
-                                <div className="card-img">
-                                    <img src="assets/img/logistics-service.jpg" alt="" className="img-fluid" />
-                                </div>
-                                <h3><a href="service-details.html" className="stretched-link">Logistics</a></h3>
-                                <p>Asperiores provident dolor accusamus pariatur dolore nam id audantium ut et iure incidunt molestiae dolor ipsam ducimus occaecati nisi</p>
+                            <div className="card rounded">
+                                <img src="https://www.coomeva.com.co/en_equidad/publicaciones/171816/el-violentometro/info/coomeva/media/galeria195561.jpg" alt="metricImage" className="img-fluid" />
                             </div>
                         </div>
                         <div className="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                            <div className="card">
-                                <div className="card-img">
-                                    <img src="assets/img/cargo-service.jpg" alt="" className="img-fluid" />
-                                </div>
-                                <h3><a href="service-details.html" className="stretched-link">Cargo</a></h3>
-                                <p>Dicta quam similique quia architecto eos nisi aut ratione aut ipsum reiciendis sit doloremque oluptatem aut et molestiae ut et nihil</p>
+                            <div className="card rounded">
+                                <img src="https://www.coomeva.com.co/en_equidad/publicaciones/171816/el-violentometro/info/coomeva/media/galeria195562.jpg" alt="metricImage" className="img-fluid" />
                             </div>
                         </div>
                         <div className="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                            <div className="card">
-                                <div className="card-img">
-                                    <img src="assets/img/trucking-service.jpg" alt="" className="img-fluid" />
-                                </div>
-                                <h3><a href="service-details.html" className="stretched-link">Trucking</a></h3>
-                                <p>Dicta quam similique quia architecto eos nisi aut ratione aut ipsum reiciendis sit doloremque oluptatem aut et molestiae ut et nihil</p>
+                            <div className="card rounded text-center firstCard">
+                                <h3 className="mt-2"><a href="javascript:void(0)" className="stretched-link text-dark">PUEDES CONTROLARLO</a></h3>
+                                <p className="text-alignJustify text-light fw-bold">Si eres la víctima o el agresor, las conductas en amarillo están bajo tu control.  Debes poner límites, fortalecer tu autoconfianza, amor propio y autocuidado, y si eres el agresor, debes comprender tus impulsos y aprender a canalizarlos.</p>
                             </div>
                         </div>
                         <div className="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-                            <div className="card">
-                                <div className="card-img">
-                                    <img src="assets/img/packaging-service.jpg" alt="" className="img-fluid" />
-                                </div>
-                                <h3><a href="service-details.html" className="stretched-link">Packaging</a></h3>
-                                <p>Illo consequuntur quisquam delectus praesentium modi dignissimos facere vel cum onsequuntur maiores beatae consequatur magni voluptates</p>
+                            <div className="card rounded text-center secondCard">
+                                <h3 className="mt-2"><a href="javascript:void(0)" className="stretched-link text-dark">DELITO MORAL Y SOCIAL</a></h3>
+                                <p className="text-alignJustify text-light fw-bold">Todo lo que está en naranja son acciones que te dañan dentro de tu círculo social. La gente puede que lo vea como algo no correcto, pero talvez no te defienda. En ese nivel o soportas (que no es deseable) o denuncias frente a un superior, director, padres, etc.</p>
                             </div>
                         </div>
                         <div className="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
-                            <div className="card">
-                                <div className="card-img">
-                                    <img src="assets/img/warehousing-service.jpg" alt="" className="img-fluid" />
-                                </div>
-                                <h3><a href="service-details.html" className="stretched-link">Warehousing</a></h3>
-                                <p>Quas assumenda non occaecati molestiae. In aut earum sed natus eatae in vero. Ab modi quisquam aut nostrum unde et qui est non quo nulla</p>
+                            <div className="card rounded text-center thirdCard">
+                                <h3 className="mt-2"><a href="javascript:void(0)" className="stretched-link text-dark">DELITO PENAL</a></h3>
+                                <p className="text-alignJustify text-light fw-bold">Si denuncias estas conductas deberá haber una consecuencia jurídica para el agresor y tú, como víctima, debes ser acompañada y restituida en tus derechos.</p>
                             </div>
                         </div>
                     </div>

@@ -18,15 +18,15 @@ const Header = () => {
         });
     }
 
-    function handleClick(event) {
-        event.preventDefault();
-        const element = document.getElementById("about");
+    function handleClick(id) {
+        console.log(id);
+        const element = document.getElementById(id);
         const offset = element.offsetTop;
         window.scrollTo({
             top: offset,
             behavior: "smooth"
         });
-    }   
+    }
 
     return (
         <header id="header" className="header d-flex align-items-center fixed-top">
@@ -41,27 +41,11 @@ const Header = () => {
                 <nav id="navbar" className="navbar">
                     <ul>
                         <li><span className="active pointer" onClick={handleScrollUp}>Inicio</span></li>
-                        <li><a href="javascript:void(0)" onClick={handleClick} className="pointer">Acerca</a></li>
+                        <li><a href="javascript:void(0)" onClick={() => handleClick("about")} className="pointer">Acerca</a></li>
                         {/* <li><a href="services.html">Services</a></li>
                         <li><a href="pricing.html">Pricing</a></li> */}
-                        <li className="dropdown"><a href="#"><span>Tipos de violencia</span> <i className="bi bi-chevron-down dropdown-indicator"></i></a>
-                            <ul>
-                                <li><a href="#">Drop Down 1</a></li>
-                                <li className="dropdown"><a href="#"><span>Deep Drop Down</span> <i className="bi bi-chevron-down dropdown-indicator"></i></a>
-                                    <ul>
-                                        <li><a href="#">Deep Drop Down 1</a></li>
-                                        <li><a href="#">Deep Drop Down 2</a></li>
-                                        <li><a href="#">Deep Drop Down 3</a></li>
-                                        <li><a href="#">Deep Drop Down 4</a></li>
-                                        <li><a href="#">Deep Drop Down 5</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Drop Down 2</a></li>
-                                <li><a href="#">Drop Down 3</a></li>
-                                <li><a href="#">Drop Down 4</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="contact.html">Contacto</a></li>
+                        <li><a href="javascript:void(0)" onClick={() => handleClick("typesViolence")}>Tipos de Violencia</a></li>
+                        <li><a href="javascript:void(0)">Contacto</a></li>
                         <li><a className="get-a-quote" href="get-a-quote.html">Ayuda</a></li>
                     </ul>
                 </nav>

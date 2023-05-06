@@ -69,16 +69,16 @@ const Hero = () => {
                         }
                     </div>
                     <div className="col-lg-5 order-1 order-lg-2 hero-img">
-                        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-                            <div class="carousel-inner rounded-circle">
-                                <div class="carousel-item active">
-                                    <img src='https://img.freepik.com/vector-gratis/tema-ilustracion-acoso-cibernetico_23-2148600811.jpg?w=2000' className="img-fluid mb-3 mb-lg-0" alt="" />
+                        <div id="carouselExampleInterval" className="carousel slide" data-bs-ride="carousel">
+                            <div className="carousel-inner rounded-circle">
+                                <div className="carousel-item active" data-bs-interval="4000">
+                                    <img src="https://img.freepik.com/vector-gratis/tema-ilustracion-acoso-cibernetico_23-2148600811.jpg?w=2000" className="d-block w-100" alt="heroImage"/>
                                 </div>
-                                <div class="carousel-item">
-                                    <img src='https://img.freepik.com/vector-gratis/interfaz-telefono-movil-ciberacoso_23-2148589181.jpg?w=2000' className="img-fluid mb-3 mb-lg-0" alt="" />
+                                <div className="carousel-item" data-bs-interval="4000">
+                                    <img src="https://img.freepik.com/vector-gratis/interfaz-telefono-movil-ciberacoso_23-2148589181.jpg?w=2000" className="d-block w-100" alt="heroImage"/>
                                 </div>
-                                <div class="carousel-item">
-                                    <img src='https://img.freepik.com/vector-gratis/ilustracion-concepto-acoso-cibernetico_114360-9816.jpg' className="img-fluid mb-3 mb-lg-0" alt="" />
+                                <div className="carousel-item" data-bs-interval="4000">
+                                    <img src="https://img.freepik.com/vector-gratis/ilustracion-concepto-acoso-cibernetico_114360-9816.jpg" className="d-block w-100" alt="heroImage"/>
                                 </div>
                             </div>
                         </div>

@@ -624,6 +624,18 @@
   .featured-services .service-item:hover .icon i {
     color: var(--color-primary);
   }
+
+  .firstCard {
+    background-color: #fbc002!important;
+  }
+
+  .secondCard {
+    background-color: #ee841c!important;
+  }
+
+  .thirdCard {
+    background-color: #cf0924!important;
+  }
   
   /*--------------------------------------------------------------
   # About Us Section
