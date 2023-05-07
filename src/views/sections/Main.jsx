@@ -1,7 +1,90 @@
+import { useEffect, useState } from 'react'
+// ALERT
+import Swal from 'sweetalert2'
+// ICONS
 import { IoMdBrowsers, IoIosArrowRoundForward, IoIosHelpBuoy, IoIosText } from 'react-icons/io'
 import { SiLevelsdotfyi } from 'react-icons/si'
 
 const Main = () => {
+
+    const [dataMessage, setDataMessage] = useState('')
+    const [dataMessageInput, setDataMessageInput] = useState('')
+    const [responseValue, setResponseValue] = useState(50)
+    const [disableBttn, setDisableBttn] = useState(true)
+    const [progressClass, setProgressClass] = useState('progress-bar bg-success')
+    const [textProgressClassLow, setTextProgressClassLow] = useState('fs-4 fst-italic text-success')
+    const [textProgressClassMid, setTextProgressClassMid] = useState('fs-4 fst-italic text-warning')
+    const [textProgressClassDanger, setTextProgressClassDanger] = useState('fs-4 fst-italic text-success')
+
+    useEffect(() => {
+        if (responseValue <= 33.33) {
+            setProgressClass('progress-bar bg-success')
+            setTextProgressClassLow('fs-2 fw-bold fst-italic text-success')
+            setTextProgressClassMid('fs-4 fw-normal fst-italic text-warning')
+            setTextProgressClassDanger('fs-4 fw-normal fst-italic text-danger')
+        } else if (responseValue < 66.66) {
+            setProgressClass('progress-bar bg-warning')
+            setTextProgressClassMid('fs-2 fw-bold fst-italic text-warning')
+            setTextProgressClassLow('fs-4 fw-normal fst-italic text-success')
+            setTextProgressClassDanger('fs-4 fw-normal fst-italic text-danger')
+        } else if (responseValue >= 66.66) {
+            setProgressClass('progress-bar bg-danger')
+            setTextProgressClassDanger('fs-2 fw-bold fst-italic text-danger')
+            setTextProgressClassLow('fs-4 fw-normal fst-italic text-success')
+            setTextProgressClassMid('fs-4 fw-normal fst-italic text-warning')
+        }
+    }, [responseValue])
+
+    const handleMessage = (icon, title, message) => {
+        Swal.fire({
+            icon: `${icon}`,
+            title: `${title}`,
+            text: `${message}`,
+        })
+    }
+
+    const handleOnChange = e => {
+        switch (e.target.name) {
+            case 'dataMessage':
+                setDataMessage(e.target.value)
+                if(e.target.value.trim().length > 0) {
+                    setDisableBttn(false)
+                } else {
+                    setDisableBttn(true)
+                }
+                break;
+            case 'dataMessageInput':
+                setDataMessageInput(e.target.value)
+                break;
+        }
+    }
+
+    const handleOnSubmit = () => {
+        if (dataMessage.trim().length !== 0 && dataMessage.trim().length < 10) {
+            handleMessage('error', 'Upss', 'Por favor envía un mensaje más largo de 10 palabras, será más preciso el resultado.')
+            return
+        }
+        responseModel()
+    }
+
+    const responseModel = () => {
+        Swal.fire({
+            title: 'Atención',
+            text: "Tus datos serán enviados",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Enviar',
+            cancelButtonText: 'Cancelar',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                handleMessage('success', '¡Exito!', 'Gracias por subir tu conversación')
+            }
+        })
+    }
+
     return (
         <main id="main">
             <section id="featured-services" className="featured-services">
@@ -92,17 +175,17 @@ const Main = () => {
                     <div className="row gy-4">
                         <div className="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                             <div className="card rounded">
-                                <img src="https://www.coomeva.com.co/en_equidad/publicaciones/171816/el-violentometro/info/coomeva/media/galeria195560.jpg" alt="metricImage" className="img-fluid" />
+                                <img src="https://www.coomeva.com.co/en_equidad/publicaciones/171816/el-violentometro/info/coomeva/media/galeria195560.jpg" alt="metricImage" className="img-fluid rounded" />
                             </div>
                         </div>
                         <div className="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                             <div className="card rounded">
-                                <img src="https://www.coomeva.com.co/en_equidad/publicaciones/171816/el-violentometro/info/coomeva/media/galeria195561.jpg" alt="metricImage" className="img-fluid" />
+                                <img src="https://www.coomeva.com.co/en_equidad/publicaciones/171816/el-violentometro/info/coomeva/media/galeria195561.jpg" alt="metricImage" className="img-fluid rounded" />
                             </div>
                         </div>
                         <div className="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
                             <div className="card rounded">
-                                <img src="https://www.coomeva.com.co/en_equidad/publicaciones/171816/el-violentometro/info/coomeva/media/galeria195562.jpg" alt="metricImage" className="img-fluid" />
+                                <img src="https://www.coomeva.com.co/en_equidad/publicaciones/171816/el-violentometro/info/coomeva/media/galeria195562.jpg" alt="metricImage" className="img-fluid rounded" />
                             </div>
                         </div>
                         <div className="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
@@ -127,154 +210,65 @@ const Main = () => {
                 </div>
             </section>
 
-            <section id="call-to-action" className="call-to-action">
-                <div className="container" data-aos="zoom-out">
-
-                    <div className="row justify-content-center">
-                        <div className="col-lg-8 text-center">
-                            <h3>Call To Action</h3>
-                            <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                            <a className="cta-btn" href="#">Call To Action</a>
-                        </div>
-                    </div>
-
-                </div>
-            </section>
-
-            {/* <section id="features" className="features">
-                <div className="container">
-
-                    <div className="row gy-4 align-items-center features-item" data-aos="fade-up">
-
-                        <div className="col-md-5">
-                            <img src="assets/img/features-1.jpg" className="img-fluid" alt=""/>
-                        </div>
-                        <div className="col-md-7">
-                            <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
-                            <p className="fst-italic">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                                magna aliqua.
-                            </p>
-                            <ul>
-                                <li><i className="bi bi-check"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                                <li><i className="bi bi-check"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                                <li><i className="bi bi-check"></i> Ullam est qui quos consequatur eos accusamus.</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div className="row gy-4 align-items-center features-item" data-aos="fade-up">
-                        <div className="col-md-5 order-1 order-md-2">
-                            <img src="assets/img/features-2.jpg" className="img-fluid" alt=""/>
-                        </div>
-                        <div className="col-md-7 order-2 order-md-1">
-                            <h3>Corporis temporibus maiores provident</h3>
-                            <p className="fst-italic">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                                magna aliqua.
-                            </p>
-                            <p>
-                                Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                                velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                                culpa qui officia deserunt mollit anim id est laborum
-                            </p>
-                        </div>
-                    </div>
-
-                    <div className="row gy-4 align-items-center features-item" data-aos="fade-up">
-                        <div className="col-md-5">
-                            <img src="assets/img/features-3.jpg" className="img-fluid" alt=""/>
-                        </div>
-                        <div className="col-md-7">
-                            <h3>Sunt consequatur ad ut est nulla consectetur reiciendis animi voluptas</h3>
-                            <p>Cupiditate placeat cupiditate placeat est ipsam culpa. Delectus quia minima quod. Sunt saepe odit aut quia voluptatem hic voluptas dolor doloremque.</p>
-                            <ul>
-                                <li><i className="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                                <li><i className="bi bi-check"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                                <li><i className="bi bi-check"></i> Facilis ut et voluptatem aperiam. Autem soluta ad fugiat.</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div className="row gy-4 align-items-center features-item" data-aos="fade-up">
-                        <div className="col-md-5 order-1 order-md-2">
-                            <img src="assets/img/features-4.jpg" className="img-fluid" alt=""/>
-                        </div>
-                        <div className="col-md-7 order-2 order-md-1">
-                            <h3>Quas et necessitatibus eaque impedit ipsum animi consequatur incidunt in</h3>
-                            <p className="fst-italic">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                                magna aliqua.
-                            </p>
-                            <p>
-                                Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                                velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                                culpa qui officia deserunt mollit anim id est laborum
-                            </p>
-                        </div>
-                    </div>
-
-                </div>
-            </section> */}
-
             <section id="pricing" className="pricing pt-0">
                 <div className="container" data-aos="fade-up">
-
                     <div className="section-header">
-                        <span>Pricing</span>
-                        <h2>Pricing</h2>
-
+                        <span>Ingresa tu conversación</span>
+                        <h2>Ingresa tu conversación</h2>
                     </div>
-
                     <div className="row gy-4">
-
-                        <div className="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                            <div className="pricing-item">
-                                <h3>Free Plan</h3>
-                                <h4><sup>$</sup>0<span> / month</span></h4>
-                                <ul>
-                                    <li><i className="bi bi-check"></i> Quam adipiscing vitae proin</li>
-                                    <li><i className="bi bi-check"></i> Nec feugiat nisl pretium</li>
-                                    <li><i className="bi bi-check"></i> Nulla at volutpat diam uteera</li>
-                                    <li className="na"><i className="bi bi-x"></i> <span>Pharetra massa massa ultricies</span></li>
-                                    <li className="na"><i className="bi bi-x"></i> <span>Massa ultricies mi quis hendrerit</span></li>
-                                </ul>
-                                <a href="#" className="buy-btn">Buy Now</a>
+                        <div className="col-lg-12" data-aos="fade-up" data-aos-delay="100">
+                            <div className="card border-0 d-flex justify-content-start p-4">
+                                <div className="progress" style={{ "height": "25px" }}>
+                                    <div className={progressClass} role="progressbar" aria-label="Example with label" style={{ "width": `${responseValue}%` }} aria-valuemin="0" aria-valuemax="100">{responseValue}%</div>
+                                </div>
+                                {/* <div className="verticalText mt-3">
+                                    hola
+                                </div> */}
+                                <div className="row mt-3">
+                                    <div className="col-4 text-center">
+                                        <div className="border-end">
+                                            <span className={textProgressClassLow}>Violencia Baja</span>
+                                        </div>
+                                    </div>
+                                    <div className="col-4 text-center">
+                                        <div className="border-end">
+                                            <span className={textProgressClassMid}>Violencia Media</span>
+                                        </div>
+                                    </div>
+                                    <div className="col-4 text-center">
+                                        <div>
+                                            <span className={textProgressClassDanger}>Violencia Alta</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
-                        <div className="col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                            <div className="pricing-item featured">
-                                <h3>Business Plan</h3>
-                                <h4><sup>$</sup>29<span> / month</span></h4>
-                                <ul>
-                                    <li><i className="bi bi-check"></i> Quam adipiscing vitae proin</li>
-                                    <li><i className="bi bi-check"></i> Nec feugiat nisl pretium</li>
-                                    <li><i className="bi bi-check"></i> Nulla at volutpat diam uteera</li>
-                                    <li><i className="bi bi-check"></i> Pharetra massa massa ultricies</li>
-                                    <li><i className="bi bi-check"></i> Massa ultricies mi quis hendrerit</li>
-                                </ul>
-                                <a href="#" className="buy-btn">Buy Now</a>
+                        <div className="col-lg-12" data-aos="fade-up" data-aos-delay="200">
+                            <div className="pricing-item2 featured">
+                                <div className="card borderStyleDashed p-3 mb-3">
+                                    <input
+                                        className="form-control"
+                                        type="file"
+                                        id="dataMessageInput"
+                                        name='dataMessageInput'
+                                        value={dataMessageInput}
+                                        onChange={handleOnChange}
+                                    />
+                                </div>
+                                <p className="fs-4 fst-italic">O</p>
+                                <textarea
+                                    className="form-control"
+                                    name="dataMessage"
+                                    id="dataMessage"
+                                    value={dataMessage}
+                                    onChange={handleOnChange}
+                                    cols="30" rows="10">
+                                </textarea>
+                                <button className="buy-btn mt-3" onClick={handleOnSubmit} disabled={disableBttn}>Enviar</button>
                             </div>
                         </div>
-
-                        <div className="col-lg-4" data-aos="fade-up" data-aos-delay="300">
-                            <div className="pricing-item">
-                                <h3>Developer Plan</h3>
-                                <h4><sup>$</sup>49<span> / month</span></h4>
-                                <ul>
-                                    <li><i className="bi bi-check"></i> Quam adipiscing vitae proin</li>
-                                    <li><i className="bi bi-check"></i> Nec feugiat nisl pretium</li>
-                                    <li><i className="bi bi-check"></i> Nulla at volutpat diam uteera</li>
-                                    <li><i className="bi bi-check"></i> Pharetra massa massa ultricies</li>
-                                    <li><i className="bi bi-check"></i> Massa ultricies mi quis hendrerit</li>
-                                </ul>
-                                <a href="#" className="buy-btn">Buy Now</a>
-                            </div>
-                        </div>
-
                     </div>
-
                 </div>
             </section>
 
@@ -282,8 +276,8 @@ const Main = () => {
                 <div className="container" data-aos="fade-up">
 
                     <div className="section-header">
-                        <span>Frequently Asked Questions</span>
-                        <h2>Frequently Asked Questions</h2>
+                        <span>Preguntas Frecuentes</span>
+                        <h2>Preguntas Frecuentes</h2>
 
                     </div>
 
@@ -296,7 +290,7 @@ const Main = () => {
                                     <h3 className="accordion-header">
                                         <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-1">
                                             <i className="bi bi-question-circle question-icon"></i>
-                                            Non consectetur a erat nam at lectus urna duis?
+                                            ¿Cómo manejamos la información?
                                         </button>
                                     </h3>
                                     <div id="faq-content-1" className="accordion-collapse collapse" data-bs-parent="#faqlist">
@@ -310,7 +304,7 @@ const Main = () => {
                                     <h3 className="accordion-header">
                                         <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-2">
                                             <i className="bi bi-question-circle question-icon"></i>
-                                            Feugiat scelerisque varius morbi enim nunc faucibus a pellentesque?
+                                            ¿Cuál es el proposito final del modelo?
                                         </button>
                                     </h3>
                                     <div id="faq-content-2" className="accordion-collapse collapse" data-bs-parent="#faqlist">

@@ -35,7 +35,7 @@ const Hero = () => {
                                 className="form-control fw-bold"
                                 defaultValue={'Victimas de violencia digital'}
                             />
-                            <span className="btn btn-primary" onClick={() => setShowNumberViolence(true)}>Search</span>
+                            <span className="btn btn-primary" onClick={() => setShowNumberViolence(true)}>Buscar</span>
                         </form>
                         {
                             showNumberViolence === true && (
