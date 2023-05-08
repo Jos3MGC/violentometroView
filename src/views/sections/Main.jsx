@@ -9,7 +9,7 @@ const Main = () => {
 
     const [dataMessage, setDataMessage] = useState('')
     const [dataMessageInput, setDataMessageInput] = useState('')
-    const [responseValue, setResponseValue] = useState(50)
+    const [responseValue, setResponseValue] = useState(80)
     const [disableBttn, setDisableBttn] = useState(true)
     const [progressClass, setProgressClass] = useState('progress-bar bg-success')
     const [textProgressClassLow, setTextProgressClassLow] = useState('fs-4 fst-italic text-success')
