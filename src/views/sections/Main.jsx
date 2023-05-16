@@ -47,7 +47,7 @@ const Main = () => {
         switch (e.target.name) {
             case 'dataMessage':
                 setDataMessage(e.target.value)
-                if(e.target.value.trim().length > 0) {
+                if (e.target.value.trim().length > 0) {
                     setDisableBttn(false)
                 } else {
                     setDisableBttn(true)
@@ -295,7 +295,7 @@ const Main = () => {
                                     </h3>
                                     <div id="faq-content-1" className="accordion-collapse collapse" data-bs-parent="#faqlist">
                                         <div className="accordion-body">
-                                            Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
+                                            Mantemos tus datos resguardados, solamente nos contactaremos contigo. Tu seguridad es primero.
                                         </div>
                                     </div>
                                 </div>
@@ -309,7 +309,7 @@ const Main = () => {
                                     </h3>
                                     <div id="faq-content-2" className="accordion-collapse collapse" data-bs-parent="#faqlist">
                                         <div className="accordion-body">
-                                            Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
+                                            El modelo de reconocimiento de la violencia tiene como objetivo principal ayudar a mantener un entorno en línea más seguro y proteger a los usuarios de posibles situaciones de violencia o abuso. Al identificar y etiquetar contenido violento, las plataformas en línea, los equipos de moderación y los usuarios pueden tomar medidas adecuadas, como eliminar el contenido, bloquear a los usuarios o reportar situaciones a las autoridades correspondientes, según sea necesario.
                                         </div>
                                     </div>
                                 </div>
@@ -318,17 +318,17 @@ const Main = () => {
                                     <h3 className="accordion-header">
                                         <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-3">
                                             <i className="bi bi-question-circle question-icon"></i>
-                                            Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi?
+                                            ¿Qué es el correo de confirmación?
                                         </button>
                                     </h3>
                                     <div id="faq-content-3" className="accordion-collapse collapse" data-bs-parent="#faqlist">
                                         <div className="accordion-body">
-                                            Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis
+                                            Se te envía a tu correo para verificar tu correo y poder seguir en una línea de contacto directa contigo.
                                         </div>
                                     </div>
                                 </div>
 
-                                <div className="accordion-item">
+                                {/* <div className="accordion-item">
                                     <h3 className="accordion-header">
                                         <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-4">
                                             <i className="bi bi-question-circle question-icon"></i>
@@ -355,7 +355,7 @@ const Main = () => {
                                             Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in
                                         </div>
                                     </div>
-                                </div>
+                                </div> */}
 
                             </div>
 

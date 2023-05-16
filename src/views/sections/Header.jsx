@@ -1,4 +1,7 @@
 import React, { useEffect } from 'react'
+// TOOLS
+import $ from 'jquery'
+import Modal from './Modal'
 
 const Header = () => {
 
@@ -46,10 +49,11 @@ const Header = () => {
                         <li><a href="pricing.html">Pricing</a></li> */}
                         <li><a href="javascript:void(0)" onClick={() => handleClick("typesViolence")}>Tipos de Violencia</a></li>
                         <li><a href="javascript:void(0)">Contacto</a></li>
-                        <li><a className="get-a-quote" href="get-a-quote.html">Ayuda</a></li>
+                        <li><a className="get-a-quote" href="javascript:void(0)" onClick={() => {$("#modalHelp").show()}}>Denuncia</a></li>
                     </ul>
                 </nav>
             </div>
+            <Modal />
         </header>
     )
 }

@@ -61,6 +61,10 @@
     writing-mode: vertical-rl;
     text-orientation: mixed;
   }
+
+  .modal {
+    --bs-modal-width: 700px!important;
+  }
   
   /*--------------------------------------------------------------
   # Sections & Section Header

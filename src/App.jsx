@@ -1,12 +1,15 @@
-import Home from './views/Home'
+import { BrowserRouter } from "react-router-dom"
+// Routes
+import AppOutlet from "./routes/AppOutlet"
+//CSS
 import './styles/index.css'
 
 function App() {
 
   return (
-    <div>
-      <Home />      
-    </div>
+    <BrowserRouter>
+      <AppOutlet />
+    </BrowserRouter>
   )
 }
 
