@@ -40,3 +40,20 @@ export const sendEmail = async (emailDestiny, matter) => {
         console.log(error)
     }
 }
+
+export const sendConversation = async (file) => {
+    try {
+        let data = new FormData()
+        data.append('file', file)
+        let result = await axios({
+            method: 'POST',
+            url: `http://127.0.0.1:5000/upload`,
+            data: data,
+        })
+        if (result.data) {
+            return result.data
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}

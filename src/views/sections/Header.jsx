@@ -37,7 +37,7 @@ const Header = () => {
                 <a href="index.html" className="logo d-flex align-items-center">
                     <img className='rounded-circle' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG4N0rRvPzRcoHRDlMYZuN7KgmZ-pqqSEHOaSqcrIkw6Zg2ycmquHWm3C7G0vqr3KKGDA&usqp=CAU" alt="unamLogo" />
                     <img className='rounded-circle ms-2 me-2' src="https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_256,w_256,f_auto,q_auto:eco,dpr_1/xzvgo512x2kmc0ciadrz" alt="ipnLogo" />
-                    <h1>Violentometro</h1>
+                    <h1>Violentómetro</h1>
                 </a>
                 <i className="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
                 <i className="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>

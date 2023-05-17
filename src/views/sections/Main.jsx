@@ -1,4 +1,8 @@
 import { useEffect, useState } from 'react'
+// API CALLS
+import { sendConversation } from '../../models/models'
+// TOOLS
+import $ from 'jquery'
 // ALERT
 import Swal from 'sweetalert2'
 // ICONS
@@ -7,10 +11,10 @@ import { SiLevelsdotfyi } from 'react-icons/si'
 
 const Main = () => {
 
-    const [dataMessage, setDataMessage] = useState('')
-    const [dataMessageInput, setDataMessageInput] = useState('')
-    const [responseValue, setResponseValue] = useState(80)
-    const [disableBttn, setDisableBttn] = useState(true)
+    const [fileData, setFileData] = useState('')
+    const [responseValue, setResponseValue] = useState(0.0)
+    const [showLoad, setShowLoad] = useState(true)
+    const [showBttn, setShowBttn] = useState(false)
     const [progressClass, setProgressClass] = useState('progress-bar bg-success')
     const [textProgressClassLow, setTextProgressClassLow] = useState('fs-4 fst-italic text-success')
     const [textProgressClassMid, setTextProgressClassMid] = useState('fs-4 fst-italic text-warning')
@@ -41,28 +45,37 @@ const Main = () => {
             title: `${title}`,
             text: `${message}`,
         })
+        handleButton()
+    }
+
+    const handleButton = () => {
+        setShowBttn(false)
+        setShowLoad(true)
     }
 
     const handleOnChange = e => {
+        $("input").removeClass("border-danger");
         switch (e.target.name) {
-            case 'dataMessage':
-                setDataMessage(e.target.value)
-                if (e.target.value.trim().length > 0) {
-                    setDisableBttn(false)
+            case 'fileData':
+                const file = e.target.files[0];
+                if (file.type === "text/plain") {
+                    console.log(file);
+                    setFileData(e.target.files[0])
                 } else {
-                    setDisableBttn(true)
+                    // El archivo no es un archivo de texto .txt
+                    handleMessage('error', 'Upss', 'Por favor envía un archivo .txt')
                 }
-                break;
-            case 'dataMessageInput':
-                setDataMessageInput(e.target.value)
                 break;
         }
     }
 
     const handleOnSubmit = () => {
-        if (dataMessage.trim().length !== 0 && dataMessage.trim().length < 10) {
-            handleMessage('error', 'Upss', 'Por favor envía un mensaje más largo de 10 palabras, será más preciso el resultado.')
-            return
+        setShowLoad(false)
+        setShowBttn(true)
+        if (fileData.size === 0) {
+            $(`#fileData`).addClass("border-danger")
+            handleMessage('error', 'Upss', 'Por favor ingresa un archivo')
+            return;
         }
         responseModel()
     }
@@ -80,7 +93,18 @@ const Main = () => {
             reverseButtons: true
         }).then((result) => {
             if (result.isConfirmed) {
-                handleMessage('success', '¡Exito!', 'Gracias por subir tu conversación')
+                sendConversation(fileData).then(resp => {
+                    if (resp.status === 1) {
+                        handleMessage('success', '¡Exito!', 'Gracias por subir tu conversación')
+                        setResponseValue(parseFloat(resp.indiceViolencia) * 100)
+                        setFileData('')
+                    } else {
+                        handleMessage('error', '¡Ups!', 'Hubo un error, por favor intentelo nuevamente.')
+                    }
+                })
+
+            } else {
+                handleButton()
             }
         })
     }
@@ -93,7 +117,7 @@ const Main = () => {
                         <div className="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up">
                             <div className="icon flex-shrink-0"><IoMdBrowsers size={25} /></div>
                             <div>
-                                <h4 className="title">Violentometro (Página Oficial)</h4>
+                                <h4 className="title">Violentómetro (Página Oficial)</h4>
                                 <p className="description text-alignJustify">La UPGPG ha diseñado​ el Violentómetro, un material gráfico y didáctico en forma de regla que consiste en visualizar las diferentes manifestaciones de violencia que se encuentran ocultas en la vida cotidiana y que muchas veces se confunden o desconocen.</p>
                                 <a href="https://www.ipn.mx/genero/materiales/violentometro.html" target='_blank' className="readmore stretched-link"><span>Ver más..</span><IoIosArrowRoundForward size={20} /></a>
                             </div>
@@ -129,9 +153,9 @@ const Main = () => {
                             </div>
                         </div>
                         <div className="col-lg-6 content order-last  order-lg-first">
-                            <h3>Acerca del Violentometro</h3>
+                            <h3>Acerca del Violentómetro</h3>
                             <p className="text-alignJustify">
-                                Es un modelo que utiliza la base del Violentometro del IPN, el cual consiste en visualizar las diferentes manifestaciones de violencia que se encuentran ocultas en la vida cotidiana.
+                                Es un modelo que utiliza la base del Violentómetro del IPN, el cual consiste en visualizar las diferentes manifestaciones de violencia que se encuentran ocultas en la vida cotidiana.
                                 <br />
                                 <br />
                                 En este caso usaremos mensajes que se envien por la aplicación Whattsapp y el cual tiene como fin lo siguiente:
@@ -250,22 +274,27 @@ const Main = () => {
                                     <input
                                         className="form-control"
                                         type="file"
-                                        id="dataMessageInput"
-                                        name='dataMessageInput'
-                                        value={dataMessageInput}
+                                        id="fileData"
+                                        name='fileData'
                                         onChange={handleOnChange}
+                                        required
                                     />
                                 </div>
-                                <p className="fs-4 fst-italic">O</p>
-                                <textarea
-                                    className="form-control"
-                                    name="dataMessage"
-                                    id="dataMessage"
-                                    value={dataMessage}
-                                    onChange={handleOnChange}
-                                    cols="30" rows="10">
-                                </textarea>
-                                <button className="buy-btn mt-3" onClick={handleOnSubmit} disabled={disableBttn}>Enviar</button>
+                                <button
+                                    type="button"
+                                    className="buy-btn mt-3"
+                                    onClick={handleOnSubmit}
+                                    hidden={showBttn}>
+                                    Enviar
+                                </button>
+                                <button
+                                    className="btn btn-primary"
+                                    hidden={showLoad}
+                                    type="button"
+                                    disabled>
+                                    <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                    Cargando...
+                                </button>
                             </div>
                         </div>
                     </div>

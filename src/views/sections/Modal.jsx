@@ -5,8 +5,6 @@ import { sendComplaint, sendEmail } from '../../models/models'
 import $ from 'jquery'
 // ALERT
 import Swal from 'sweetalert2'
-// ICONS
-import { BsChatSquareTextFill } from 'react-icons/bs'
 
 const Modal = () => {
 
@@ -165,7 +163,7 @@ const Modal = () => {
                 <div className="modal-content">
                     <div className="modal-header row">
                         <div className="col-11 mx-auto text-center">
-                            <h5 className="modal-title"><BsChatSquareTextFill /> Denuncia</h5>
+                            <img src="https://www.redspira.org/images/headers/MANO_DENUNCIA.png" className="img-fluid" width={"35%"} alt="logo" />
                         </div>
                         <div className="col-1">
                             <button type="button" className="btn-close" onClick={() => { $("#modalHelp").hide() }} data-bs-dismiss="modal" aria-label="Close"></button>

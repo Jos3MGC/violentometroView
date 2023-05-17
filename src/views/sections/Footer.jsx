@@ -7,7 +7,7 @@ const Footer = () => {
                 <div className="row gy-5">
                     <div className="col-lg-6 col-md-12 footer-info">
                         <a href="index.html" className="logo d-flex align-items-center">
-                            <span>Violentometro</span>
+                            <span>Violentómetro</span>
                         </a>
                         <p className="text-alignJustify">
                             "La violencia no es solo matar a otro. Hay violencia cuando usamos una palabra denigrante, cuando hacemos gestos para despreciar a otra persona, cuando obedecemos porque hay miedo.
@@ -37,11 +37,8 @@ const Footer = () => {
                     <div className="col-lg-6 col-md-12 footer-contact text-center text-md-end">
                         <h4>Contactanos</h4>
                         <p>
-                            A108 Adam Street <br />
-                            New York, NY 535022<br />
-                            United States <br /><br />
-                            <strong>Phone:</strong> +1 5589 55488 55<br />
-                            <strong>Email:</strong> info@example.com<br />
+                           {/*  <strong>Phone:</strong> +1 5589 55488 55<br /> */}
+                            <strong>Email:</strong> violentometrounam@gmail.com<br />
                         </p>
 
                     </div>
