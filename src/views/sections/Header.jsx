@@ -48,10 +48,10 @@ const Header = () => {
                         {/* <li><a href="services.html">Services</a></li>
                         <li><a href="pricing.html">Pricing</a></li> */}
                         <li><a href="javascript:void(0)" onClick={() => handleClick("typesViolence")}>Tipos de Violencia</a></li>
-                        <li><a href="javascript:void(0)">Contacto</a></li>
-                        <li><a className="get-a-quote" href="javascript:void(0)" onClick={() => {$("#modalHelp").show()}}>Denuncia</a></li>
+                        {/* <li><a href="javascript:void(0)">Contacto</a></li> */}
+                        <li><a className="get-a-quote" href="javascript:void(0)" onClick={() => { $("#modalHelp").show() }}>Denuncia</a></li>
                     </ul>
-                </nav>
+                </nav>                
             </div>
             <Modal />
         </header>

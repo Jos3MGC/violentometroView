@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 // API CALLS
 import { sendConversation } from '../../models/models'
 // TOOLS
@@ -15,6 +15,7 @@ const Main = () => {
     const [responseValue, setResponseValue] = useState(0.0)
     const [showLoad, setShowLoad] = useState(true)
     const [showBttn, setShowBttn] = useState(false)
+    const fileInputRef = useRef(null)
     const [progressClass, setProgressClass] = useState('progress-bar bg-success')
     const [textProgressClassLow, setTextProgressClassLow] = useState('fs-4 fst-italic text-success')
     const [textProgressClassMid, setTextProgressClassMid] = useState('fs-4 fst-italic text-warning')
@@ -52,6 +53,11 @@ const Main = () => {
         setShowBttn(false)
         setShowLoad(true)
     }
+
+    const handleFileClear = () => {
+        // Limpiar el valor del input file
+        fileInputRef.current.value = "";
+    };
 
     const handleOnChange = e => {
         $("input").removeClass("border-danger");
@@ -93,11 +99,13 @@ const Main = () => {
             reverseButtons: true
         }).then((result) => {
             if (result.isConfirmed) {
+                console.log(fileData);
                 sendConversation(fileData).then(resp => {
                     if (resp.status === 1) {
                         handleMessage('success', '¡Exito!', 'Gracias por subir tu conversación')
                         setResponseValue(parseFloat(resp.indiceViolencia) * 100)
                         setFileData('')
+                        handleFileClear()
                     } else {
                         handleMessage('error', '¡Ups!', 'Hubo un error, por favor intentelo nuevamente.')
                     }
@@ -273,6 +281,7 @@ const Main = () => {
                                 <div className="card borderStyleDashed p-3 mb-3">
                                     <input
                                         className="form-control"
+                                        ref={fileInputRef}
                                         type="file"
                                         id="fileData"
                                         name='fileData'
