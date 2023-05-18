@@ -99,11 +99,10 @@ const Main = () => {
             reverseButtons: true
         }).then((result) => {
             if (result.isConfirmed) {
-                console.log(fileData);
                 sendConversation(fileData).then(resp => {
                     if (resp.status === 1) {
                         handleMessage('success', '¡Exito!', 'Gracias por subir tu conversación')
-                        setResponseValue(parseFloat(resp.indiceViolencia) * 100)
+                        setResponseValue(parseFloat(resp.indiceViolencia).toFixed(2) * 100)
                         setFileData('')
                         handleFileClear()
                     } else {
