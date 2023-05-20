@@ -91,7 +91,7 @@ const Modal = () => {
                 sendComplaint(names, surnames, eventZone, email, phone, idPlatform, age).then(resp => {
                     if (resp.code === 1) {
                         message("success", `${resp.message}`)
-                        sendEmail(email, matter).then(resp => {
+                        sendEmail(email, matter, names, surnames).then(resp => {
                             if (resp.status === 1) {
                                 message("success", `${resp.message}`)
                                 handleButton()

@@ -23,11 +23,13 @@ export const sendComplaint = async (names, surnames, eventZone, email, phone, id
     }
 }
 
-export const sendEmail = async (emailDestiny, matter) => {
+export const sendEmail = async (emailDestiny, matter, names, surnames) => {
     try {
         let data = new FormData()
         data.append('destinatario', emailDestiny)
         data.append('asunto', matter)
+        data.append('names', names)
+        data.append('surnames', surnames)
         let result = await axios({
             method: 'POST',
             url: `http://127.0.0.1:5000/enviar-correo`,

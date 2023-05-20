@@ -14,12 +14,16 @@
     "axios": "^1.4.0",
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.5",
+    "d3": "^7.8.4",
+    "d3-selection": "^3.0.0",
+    "d3-transition": "^3.0.1",
     "jquery": "^3.7.0",
     "react": "^18.2.0",
     "react-countup": "^6.4.2",
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
     "react-router-dom": "^6.11.1",
+    "react-wordcloud": "^1.2.7",
     "sweetalert2": "^11.7.5"
   },
   "devDependencies": {

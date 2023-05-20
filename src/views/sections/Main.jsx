@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 // API CALLS
 import { sendConversation } from '../../models/models'
+// COMPONENTS
+import WordCloudView from '../wordCloud/WordCloudView'
 // TOOLS
 import $ from 'jquery'
 // ALERT
@@ -253,9 +255,6 @@ const Main = () => {
                                 <div className="progress" style={{ "height": "25px" }}>
                                     <div className={progressClass} role="progressbar" aria-label="Example with label" style={{ "width": `${responseValue}%` }} aria-valuemin="0" aria-valuemax="100">{responseValue}%</div>
                                 </div>
-                                {/* <div className="verticalText mt-3">
-                                    hola
-                                </div> */}
                                 <div className="row mt-3">
                                     <div className="col-4 text-center">
                                         <div className="border-end">
@@ -303,6 +302,11 @@ const Main = () => {
                                     <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                                     Cargando...
                                 </button>
+                            </div>
+                        </div>
+                        <div className="col-lg-12">
+                            <div className="featured mt-4 d-flex justify-content-center align-items-center">
+                                <WordCloudView />
                             </div>
                         </div>
                     </div>
@@ -364,35 +368,6 @@ const Main = () => {
                                         </div>
                                     </div>
                                 </div>
-
-                                {/* <div className="accordion-item">
-                                    <h3 className="accordion-header">
-                                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-4">
-                                            <i className="bi bi-question-circle question-icon"></i>
-                                            Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla?
-                                        </button>
-                                    </h3>
-                                    <div id="faq-content-4" className="accordion-collapse collapse" data-bs-parent="#faqlist">
-                                        <div className="accordion-body">
-                                            <i className="bi bi-question-circle question-icon"></i>
-                                            Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="accordion-item">
-                                    <h3 className="accordion-header">
-                                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-5">
-                                            <i className="bi bi-question-circle question-icon"></i>
-                                            Tempus quam pellentesque nec nam aliquam sem et tortor consequat?
-                                        </button>
-                                    </h3>
-                                    <div id="faq-content-5" className="a    cordion-collapse collapse" data-bs-parent="#faqlist">
-                                        <div className="accordion-body">
-                                            Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in
-                                        </div>
-                                    </div>
-                                </div> */}
 
                             </div>
 
