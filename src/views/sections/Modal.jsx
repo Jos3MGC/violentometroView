@@ -281,7 +281,7 @@ const Modal = () => {
                         <button
                             type="button"
                             hidden={showBttn}
-                            className="btn btn-primary"
+                            className="complaintButton btn-lg py-2"
                             onClick={handleOnSubmit}>
                             Guardar
                         </button>
